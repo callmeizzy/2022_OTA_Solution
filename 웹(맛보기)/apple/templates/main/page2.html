@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html lange = 'en'>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>개버랜드</title>
+    <link rel = 'stylesheet' href = 'static/css/style.css'
+    {% comment %} style 지우면 맵 안뜸 ! 절대 지우지 말 것  {% endcomment %}
+    <style>    
+    </style>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ttuwsv1xys"></script>
+</head>
+<body>
+    {% comment %}css형태로 배너로 만들어 줄것  {% endcomment %}
+    <div id = 'navbar'>우리 강아지랑 갈 수 있는 숙소는요 ~</div>
+    
+    {% comment %} 인포박스 만들기 {% endcomment %}
+    <div id = 'infoBox'>
+        <div id = 'infoTitle'>현재날짜</div>
+        <div id = 'infoContent'>2022.07.14</div>
+    </div>
+
+    {% comment %} 맵 너비 조정  {% endcomment %}
+    
+    <div id="map" style="width:100%;height:400px;"></div>
+    {% comment %} 
+    <script>
+        <script type = 'text/javascript' src = '/data/data.js'></script>
+    var mapOptions = {
+        center: new naver.maps.LatLng(37.82891519,127.6029),
+        zoom: 10
+    };
+    var map = new naver.maps.Map('map', mapOptions);
+    
+    for (var i in data){
+        var target = data[i];
+        var latlng = new naver.maps.LatLng(target.lat, target.lng);
+            marker = new naver.maps.Marker({
+            map : map,
+            position : latlng,          
+        });
+    }
+    {% endcomment %}
+    <script>
+        {% comment %} 지도 중심 {% endcomment %}
+        const locations = 
+        [
+            { place:"	미산분교캠핑장	", lat: 	37.87105658	, lng: 	128.3182	 },
+            { place:"	카리스펜션	", lat: 	37.85730937	, lng: 	128.8528	 },
+            { place:"	슬로우캠프	", lat: 	37.34616675	, lng: 	128.1949	 },
+            { place:"	금방아 민박 캠핑장	", lat: 	37.31786034	, lng: 	128.2604	 },
+            { place:"	사람과자연펜션	", lat: 	37.29350941	, lng: 	128.333	 },
+            { place:"	비안단테 펜션	", lat: 	37.9025002	, lng: 	127.7002	 },
+            { place:"	청호정펜션	", lat: 	37.19196437	, lng: 	128.4295	 },
+            { place:"	양양해피플레이스	", lat: 	38.14120923	, lng: 	128.5728	 },
+            { place:"	해피리버펜션	", lat: 	37.6828358	, lng: 	127.6497	 },
+            { place:"	신나개 애견펜션	", lat: 	37.38188252	, lng: 	129.2434	 },
+            { place:"	오크카운티펜션	", lat: 	37.41347341	, lng: 	127.8041	 },
+            { place:"	강이네하우스	", lat: 	38.06692416	, lng: 	128.5834	 },
+            { place:"	펜션아이리스	", lat: 	37.62156995	, lng: 	127.6751	 },
+            { place:"	곰앤패들보드 캠핑장	", lat: 	37.81494301	, lng: 	128.8953	 },
+            { place:"	학조리샘말펜션	", lat: 	38.06830865	, lng: 	127.9792	 },
+            { place:"	아름다운집	", lat: 	37.82891519	, lng: 	127.6029	 },
+            { place:"	하얀멍이 애견펜션	", lat: 	38.08286387	, lng: 	128.5723	 },
+            { place:"	별비내리는마을펜션	", lat: 	38.2079295	, lng: 	127.2707	 },
+            { place:"	학마을캠핑장	", lat: 	38.23609437	, lng: 	127.2211	 },
+            { place:"	조양펜션	", lat: 	38.18818533	, lng: 	128.6026	 },
+            { place:"	엘페로애견펜션	", lat: 	37.62483522	, lng: 	127.6632	 },
+            { place:"	하이하늘펜션	", lat: 	37.22169061	, lng: 	128.8628	 },
+            { place:"	더퍼피즈블루오션	", lat: 	38.14196164	, lng: 	128.6125	 },
+            { place:"	하이봉자	", lat: 	37.3759722	, lng: 	127.999	 },
+            { place:"	블루앤펫	", lat: 	37.79631596	, lng: 	128.9172	 },
+            { place:"	나인원펜션	", lat: 	37.80251456	, lng: 	128.8705	 },
+            { place:"	도그밀리	", lat: 	37.47814652	, lng: 	128.2733	 },
+            { place:"	아담하우스	", lat: 	38.11793029	, lng: 	128.6298	 },
+            { place:"	방태산솔마루오토캠핑장	", lat: 	37.93937549	, lng: 	128.3815	 },
+            { place:"	반디하우스	", lat: 	37.87627874	, lng: 	128.2716	 },
+            { place:"	영월키즈캠핑장(힐링캠프)	", lat: 	37.36410794	, lng: 	128.2734	 },
+            { place:"	하늘풍경펜션	", lat: 	37.79320361	, lng: 	127.626	 },
+            { place:"	화천써비스펜션	", lat: 	38.06216819	, lng: 	127.6983	 },
+            { place:"	경포도도애견펜션	", lat: 	37.80811754	, lng: 	128.8857	 },
+            { place:"	프로방스 펜션	", lat: 	37.24513849	, lng: 	128.7606	 },
+            { place:"	가을동화펜션	", lat: 	37.62729821	, lng: 	128.3519	 },
+            { place:"	힐링하시개	", lat: 	37.58625753	, lng: 	128.3082	 },
+            { place:"	해피몽펜션	", lat: 	37.7563505	, lng: 	128.7943	 },
+            { place:"	봄여름가을겨울	", lat: 	37.55847468	, lng: 	128.3893	 },
+            { place:"	그랑샤리오	", lat: 	37.47864698	, lng: 	128.273	 },
+            { place:"	정선황토펜션	", lat: 	37.37525603	, lng: 	128.646	 },
+            { place:"	락있수다펜션	", lat: 	37.28984089	, lng: 	128.8403	 },
+            { place:"	라비앙펜션	", lat: 	37.62054783	, lng: 	128.3501	 },
+            { place:"	큐브존 캠핑&펜션	", lat: 	37.23187464	, lng: 	128.3472	 },
+            { place:"	꿈엔들캠프	", lat: 	37.3428711	, lng: 	128.281	 },
+            { place:"	숲속의 정원	", lat: 	38.30652792	, lng: 	128.4897	 },
+            { place:"	봉쥬르펜션	", lat: 	37.57500478	, lng: 	128.354	 },
+            { place:"	한반도캠핑장	", lat: 	37.2152567	, lng: 	128.3562	 },
+            { place:"	러빙네이쳐 캠핑장	", lat: 	38.00149385	, lng: 	128.1157	 },
+            { place:"	대박이하우스	", lat: 	37.55602399	, lng: 	128.3166	 },
+            { place:"	황토민박펜션	", lat: 	37.50874203	, lng: 	129.0957	 },
+            { place:"	월드니스 오토 캠핑장	", lat: 	37.29993249	, lng: 	128.2207	 },
+            { place:"	몬띠마르펜션	", lat: 	38.11898823	, lng: 	128.5706	 },
+            { place:"	평창듀오애견수영장계곡펜션	", lat: 	37.47929352	, lng: 	128.2737	 },
+            { place:"	비안단테펜션 원주점	", lat: 	37.18084166	, lng: 	127.758	 },
+            { place:"	나디아민박	", lat: 	37.38503009	, lng: 	129.2422	 },
+            { place:"	유알풀빌라펜션	", lat: 	37.35812207	, lng: 	127.8	 },
+            { place:"	메이플펜션	", lat: 	37.2454475	, lng: 	128.7613	 },
+            { place:"	강촌잠빌펜션	", lat: 	37.79759514	, lng: 	127.6392	 },
+            { place:"	발렌타인애견펜션	", lat: 	38.04593739	, lng: 	128.6149	 },
+            { place:"	아쇼카펜션	", lat: 	38.05139985	, lng: 	128.6885	 },
+            { place:"	쏠리오	", lat: 	37.84439791	, lng: 	127.5422	 },
+            { place:"	펜션 숲속하얀뜰	", lat: 	37.57531188	, lng: 	128.3535	 },
+            { place:"	오핑펜션	", lat: 	38.12807794	, lng: 	128.6243	 },
+            { place:"	영월캠프	", lat: 	37.36214886	, lng: 	128.2772	 },
+            { place:"	아침에새소리	", lat: 	37.61691602	, lng: 	128.3421	 },
+            { place:"	월드니스 글램핑장	", lat: 	37.30076708	, lng: 	128.2214	 },
+            { place:"	펜션지아니	", lat: 	37.6859321	, lng: 	129.0343	 },
+            { place:"	파인트리 캠핑장	", lat: 	37.31613816	, lng: 	128.6937	 },
+            { place:"	수한예	", lat: 	37.90500504	, lng: 	127.7537	 },
+            { place:"	까사초당	", lat: 	37.78718309	, lng: 	128.9135	 },
+            { place:"	프렌즈애견펜션	", lat: 	37.81174613	, lng: 	128.8805	 },
+            { place:"	또바기콘도펜션	", lat: 	37.2636234	, lng: 	128.7966	 },
+            { place:"	보노펜션	", lat: 	38.05352174	, lng: 	128.6865	 },
+            { place:"	화이트샌드펜션	", lat: 	37.97200617	, lng: 	128.7619	 },
+            { place:"	빈티지하우스펜션	", lat: 	38.07796647	, lng: 	128.6715	 },
+            { place:"	설악비치펜션	", lat: 	38.12933371	, lng: 	128.6229	 },
+            { place:"	서퍼스파라다이스 STAY	", lat: 	37.96967041	, lng: 	128.7616	 },
+            { place:"	보리네민박	", lat: 	38.00382384	, lng: 	128.2271	 },
+            { place:"	정관루	", lat: 	37.79012495	, lng: 	127.5261	 },
+            { place:"	헤이춘천	", lat: 	37.86535614	, lng: 	127.7322	 },
+            { place:"	춘천숲자연휴양림캠핑장	", lat: 	37.74773175	, lng: 	127.7425	 },
+            { place:"	라마다호텔&스위트평창	", lat: 	37.66003633	, lng: 	128.718	 },
+            { place:"	북극곰 야영장	", lat: 	37.63763451	, lng: 	128.3388	 },
+            { place:"	샬레리조트	", lat: 	37.57578605	, lng: 	128.3491	 },
+            { place:"	보물섬캠핑장	", lat: 	37.55262093	, lng: 	128.3917	 },
+            { place:"	남강캠프	", lat: 	37.34996603	, lng: 	128.2802	 },
+            { place:"	산여울 캠핑장	", lat: 	37.37706961	, lng: 	128.2718	 },
+            { place:"	여울소리 오토 캠핑장	", lat: 	37.29335475	, lng: 	128.2688	 },
+            { place:"	한반도 솔숲쉼터	", lat: 	37.25103487	, lng: 	128.3687	 },
+            { place:"	신영펜션	", lat: 	37.62763914	, lng: 	127.6672	 },
+            { place:"	평화의댐오토캠핑장	", lat: 	38.20652873	, lng: 	127.8501	 },
+            { place:"	국립화천숲속야영장	", lat: 	38.01030672	, lng: 	127.7976	 },
+            { place:"	아폴로천문대펜션	", lat: 	38.10805373	, lng: 	127.4436	 },
+            { place:"	가산농원캠핑장	", lat: 	38.22409963	, lng: 	127.2657	 },
+            { place:"	마운틴밸리펜션	", lat: 	38.15224046	, lng: 	127.2043	 },
+            { place:"	케렌시아펜션	", lat: 	38.18290052	, lng: 	127.2764	 },
+            { place:"	라이프위드도그	", lat: 	38.00156001	, lng: 	128.2317	 },
+            { place:"	올리브펜션	", lat: 	37.57391445	, lng: 	129.1167	 },
+            { place:"	동쪽바다프리미엄하우스(카페앤라씨)	", lat: 	37.58017422	, lng: 	129.1131	 },
+            { place:"	너랑온펜션	", lat: 	37.59091793	, lng: 	129.0893	 },
+            { place:"	망상파크펜션	", lat: 	37.59117725	, lng: 	129.0886	 },
+            { place:"	장호비치캠핑장	", lat: 	37.28456	, lng: 	129.3124	 },
+            { place:"	메이힐스리조트	", lat: 	37.21146751	, lng: 	128.8353	 },
+            { place:"	바다향기펜션	", lat: 	38.17869301	, lng: 	128.6041	 },
+            { place:"	세인트존스호텔	", lat: 	37.79128075	, lng: 	128.9209	 },
+            { place:"	양양캠핑장 어성전계곡야영장	", lat: 	37.94716181	, lng: 	128.6634	 },
+            { place:"	하조대아름들펜션	", lat: 	38.00799846	, lng: 	128.6917	 },
+            { place:"	아름다운바다콘도텔	", lat: 	38.15569302	, lng: 	128.6089	 },
+            { place:"	숲속의집	", lat: 	37.93192757	, lng: 	128.6748	 },
+            { place:"	솔치송어파티펜션	", lat: 	37.26869471	, lng: 	128.1999	 },
+            { place:"	탑스텐 리조트 동강시스타	", lat: 	37.21776152	, lng: 	128.5187	 },
+            { place:"	SL호텔 강릉	", lat: 	37.88915566	, lng: 	128.8254	 },
+            { place:"	힐링캠프 애견동반 펜션	", lat: 	37.28871618	, lng: 	129.3027	 },
+            { place:"	로뎀나무 펜션	", lat: 	37.81182006	, lng: 	128.898	 },
+            { place:"	정원가든 애견동반펜션	", lat: 	37.28057338	, lng: 	129.2965	 },
+            { place:"	꽃내음펜션	", lat: 	37.28355509	, lng: 	129.2976	 },
+            { place:"	그린향펜션	", lat: 	37.28548241	, lng: 	129.2996	 },
+            { place:"	설악의정원	", lat: 	38.21458163	, lng: 	128.5174	 },
+            { place:"	파인힐 애견펜션	", lat: 	37.86920213	, lng: 	128.8316	 },
+            { place:"	휘닉스평창리조트	", lat: 	37.58246341	, lng: 	128.3269	 },
+            { place:"	소노펫클럽앤리조트	", lat: 	37.65233706	, lng: 	127.6873	 },
+            { place:"	하이원리조트	", lat: 	37.20721956	, lng: 	128.8368	 },
+            { place:"	힐리언스 선마을	", lat: 	37.65154223	, lng: 	127.6303	 },
+            { place:"	바다와펜션	", lat: 	37.84538858	, lng: 	128.8693	 },
+            { place:"	월드스카이호텔	", lat: 	38.20113028	, lng: 	128.5865	 },
+            { place:"	해마루 펜션	", lat: 	37.28502643	, lng: 	129.3127	 },
+            { place:"	명파해변 오토캠핑장	", lat: 	38.54342995	, lng: 	128.4054	 }
+
+
+        ];
+       
+        {% comment %} 지도 중심 {% endcomment %}
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(38.20113028, 128.5865),
+            zoom: 10
+        });
+
+        for (var i = 0; i < locations.length; i++) {
+                var marker = new naver.maps.Marker({
+                    map: map,
+                    title: locations[i].place,
+                    position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+                });
+            }
+    </script>  
+    <form action = '{% url 'page3' %}' method = 'post'>
+        {% csrf_token %}
+        </p><input type = 'submit' value = '즐길거리는 여기를 클릭'></p></form>
+</body>
+</html>

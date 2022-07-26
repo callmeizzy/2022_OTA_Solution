@@ -1,0 +1,58 @@
+<html lange = 'en'>
+    <head>
+        <meta charset = 'UTF-8'>
+        <title>개버랜드</title>
+        <style>
+            body {
+                background-image : url('https://a.cdn-hotels.com/gdcs/production106/d509/18ef0f52-b1cf-4284-b97e-2c763fa1fd1b.jpg');
+                background-repeat : no-repeat;
+                background-size : cover;
+            }
+        </style>
+    </head>
+    <body style="text-align : center;">
+             
+        <p><form action = '{% url 'page2' %}' method = 'post'>
+            
+            {% csrf_token %}
+            
+            <a style = 'color : white'>
+            <h1> WELCOME TO 개버랜드 </h1>
+            {% comment %} 강아지 이름  {% endcomment %}
+            <p>
+                <label for = 'name'> 내 동생 이름은 </label>
+                <input id = 'name' type = 'text' name = 'name' value = '{{dog_name}}'>
+                <label for = 'name'> 에요 </label>
+            </p>
+
+            {% comment %} 강아지 나이  {% endcomment %}
+            <p>
+                <label for = 'age'> 저랑 함께한지는 </label>
+                <input id = 'age' type = 'text' name = 'age' value = '{{dog_age}}'>
+                <label for = 'name'> 살 정도 되었어요 </label>
+            </p>
+
+            {% comment %} 강아지 체중  {% endcomment %}
+            <p>
+                <label for = 'wgt'> 몸무게는 비밀인데 </label>
+                <input id = 'wgt' type = 'text' name = 'wgt' value = '{{dog_wgt}}'
+                <label for = 'name'> KG, 쉿쉿 </label>
+            </p>
+
+            {% comment %} 강아지 품종  {% endcomment %}
+            <p>
+                <label for = 'kind'> 혈통은 </label>
+                <input id = 'kind' type = 'text' name = 'kind' value = '{{kind}}'>
+                <label for = 'name'> 에요 </label>
+            </p>
+
+            {% comment %} 입력버튼 {% endcomment %}
+            <p>         
+                <input type = 'submit' value = '입장 '>
+            </p>
+            </a> 
+
+        </form></p> 
+        
+    </body>
+</html>
