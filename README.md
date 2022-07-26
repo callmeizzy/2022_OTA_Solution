@@ -3,7 +3,8 @@
  **반려동물 데이터를 이용하여 여행에 반려동물이 중심이 되는 OTA 카테고리 서비스를 기획했다.**
  
  **신규 서비스 / 맞춤추천 / 사업성 , 3개의 솔루션을 제안한다 (클릭하시면 해당 제안으로 이동)**
- https://callmeizzy.notion.site/Main-project-2-Suggetion-for-OTA-3323471d011949468414baad2df56c0a
+ 
+ 포트폴리오 링크: https://callmeizzy.notion.site/Main-project-2-Suggetion-for-OTA-3323471d011949468414baad2df56c0a
 
 1. [[제안 1] 애견동반 서비스 카테고리 메인 노출 (가칭 : 개버랜드)](https://www.notion.so/Main-project-2-Suggetion-for-OTA-3323471d011949468414baad2df56c0a)
 2. [[제안 2] 체중 별 맞춤 애견 동반 숙박지 및 근처 놀거리 추천](https://www.notion.so/Main-project-2-Suggetion-for-OTA-3323471d011949468414baad2df56c0a)
